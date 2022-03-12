@@ -1,63 +1,87 @@
-*{
-    font-family: Arial, Helvetica, sans-serif;
-    margin: 0px;
+* {
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0px;
 }
 
-h1{
-    font-family: Arial, Helvetica, sans-serif;
-    margin: 10px 5px;
-    
+h1 {
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 10px 5px;
+  color: white;
 }
 
-input{
-    margin: 0 0 8px;
+input {
+  margin: 0 0 8px;
 }
 
-
-#div_principal{
-    height: 200px;
-    width: 100%;
+#div_principal {
+  height: 200px;
+  width: 100%;
 }
 
-#calculo_esquerda, #calculo_direita{
-    width: 50%;
-    float:left;
+#calculo_esquerda {
+  margin: 0%;
+  margin-left: 3%;
+  width: 50%;
+  float: left;
+}
+#calculo_direita {
+  margin: 0%;
+  width: 70%;
+  margin-left: 50%;
 }
 
-#btn_calc_enfermeiras{
-    margin: 15px 5px;
+#btn_calc_enfermeiras {
+  margin: 15px 5px;
 }
 
-#btn_calc_sensores{
-    margin: 15px 5px;
+#btn_calc_sensores {
+  margin: 15px 5px;
 }
 
-
-.div_inputs{
-    padding: 0 5px;
+.div_inputs {
+  padding: 0 5px;
+  color: #72767d;
 }
 
-#mostrar_resultadoSensores, #mostrar_resultadoEnfermeiras{
-    margin-left: 5px;
+#mostrar_resultadoSensores,
+#mostrar_resultadoEnfermeiras {
+  margin-left: 5px;
 }
 
-#btn_custo{
-    margin: 10% 30% 0 40%;
-    float:left
+#btn_custo {
+  margin: 3% 30% 0 40%;
+  float: left;
 }
 
 .btn_lucro {
-    -webkit-border-radius: 20px;
-    -moz-border-radius: 20px;
-    border-radius: 20px;
-    color: #000000;
-    font-family: Arial;
-    font-size: 20px;
-    font-weight: 500;
-    padding: 11px;
-    background-color: rgba(51, 185, 32, 0.94);
-    text-decoration: none;
-    display: inline-block;
-    cursor: pointer;
-    text-align: center;
- }
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  border-radius: 20px;
+  color: #000000;
+  font-family: Arial;
+  font-size: 20px;
+  font-weight: 500;
+  padding: 11px;
+  background-color: rgba(51, 185, 32, 0.94);
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+  text-align: center;
+}
+.div_estilo {
+  background-color: #36393f;
+  border-radius: 5px;
+  display: block;
+}
+.esquerda_form {
+  padding: 32px;
+  padding-bottom: 10px;
+
+  width: 70%;
+}
+.direita_form {
+  padding: 32px;
+  padding-bottom: 58.8px;
+
+  width: 50%;
+}

@@ -1,18 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Calculadora Financeira</title>
     <link href="estilização.css" rel="stylesheet">
 </head>
 
 <body>
-    <div id="div_principal">
+    <div  id="div_principal">
         <div id="calculo_esquerda">
-            <div class="centralizar_div">
+            <div class="esquerda_form div_estilo">
                 <h1>Gastos com Enfermeiras</h1>
                 <div class="div_inputs">
                     Quantidade de horas trabalhadas semanais: <br><input id="input_semanal"><br>
@@ -28,9 +28,9 @@
 
 
         <div id="calculo_direita">
-            <div class="centralizar_div">
+            <div class="direita_form div_estilo">
                 <h1>Gasto com Sensores</h1>
-                <div class="div_inputs">
+                <div class="div_inputs div_direita">
                     Número de incubadoras: <br><input id="input_incubadoras"><br>
                     Horas diárias em que os sensores estão ativos: <br><input id="input_horas"></input><br>
                     Dias por mês em que os sensores estão ativos: <br><input id="input_dias"><br>
@@ -65,12 +65,13 @@
         var tempoMediçõesSemana = tempoMediçõesHora * horasSemanais
         var tempoMediçõesMês = ((tempoMediçõesSemana * 4) / 60).toFixed(0)
         var salarioPorHora = valorSalario / horasMensais
-        var salarioPorMedições = (salarioPorHora * tempoMediçõesMês)
+        var salarioPorMedições = (salarioPorHora * tempoMediçõesMês).toLocaleString("pt-BR", {currency:"BRL"})
         var PorcentagemSalarioMedições = (100 / (valorSalario / salarioPorMedições)).toFixed(0)
+        var result_salarioPorMedições = salarioPorMedições
 
         mostrar_resultadoEnfermeiras.innerHTML =
             `Atualmente, uma enfermeira perde <b style="color: red">${tempoMediçõesMês} horas</b> por mês realizando medições manuais.<br>
-        Financeiramente, são perdidos por mês <b style="color: red">R$${salarioPorMedições.toFixed(2)}</b>, que equivale a <b style="color: red">${PorcentagemSalarioMedições}%</b> do salario dela.
+        Financeiramente, são perdidos por mês <b style="color: red">R$${result_salarioPorMedições}</b>, que equivale a <b style="color: red">${PorcentagemSalarioMedições}%</b> do salario dela.
 `
     }
 
@@ -80,7 +81,8 @@
         var dias = Number(input_dias.value)
         var custoMensal = (((0.004 * dias * horasDiariasSensor) * 0.86) * qtdIncubadoras)
 
-        mostrar_resultadoSensores.innerHTML = `Com os sensores instalados nas ${qtdIncubadoras} incubadoras, o gasto mensal de energia elétrica será de <b style="color: green">R$${custoMensal.toFixed(2)}</b>.`
+        mostrar_resultadoSensores.innerHTML = `Com os sensores instalados nas ${qtdIncubadoras} incubadoras, o gasto mensal de energia elétrica será de <b style="color: green">R$${custoMensal.toFixed(2)}</b>.
+        `
     }
 
     function Perda() {
