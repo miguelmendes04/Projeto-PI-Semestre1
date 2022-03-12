@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="estilização.css" rel="stylesheet">
+</head>
+
+<body>
+    <div id="div_principal">
+        <div id="calculo_esquerda">
+            <div class="centralizar_div">
+                <h1>Gastos com Enfermeiras</h1>
+                <div class="div_inputs">
+                    Quantidade de horas trabalhadas semanais: <br><input id="input_semanal"><br>
+                    Quantidade de bebês por enfermeira: <br><input id="input_bebes"><br>
+                    Salário médio das enfermeiras: <br><input id="input_salario"><br>
+                    Número de medições por hora: <br><input id="input_mediçõesHora"><br>
+                </div>
+                <button onclick="calculoEnfermeiras()" id="btn_calc_enfermeiras">Mostrar dados</button>
+                <div id="mostrar_resultadoEnfermeiras"></div>
+            </div>
+
+        </div>
+
+
+        <div id="calculo_direita">
+            <div class="centralizar_div">
+                <h1>Gasto com Sensores</h1>
+                <div class="div_inputs">
+                    Número de incubadoras: <br><input id="input_incubadoras"><br>
+                    Horas diárias em que os sensores estão ativos: <br><input id="input_horas"></input><br>
+                    Dias por mês em que os sensores estão ativos: <br><input id="input_dias"><br>
+                </div>
+                <button onclick="calculoSensores()" id="btn_calc_sensores">Mostrar Dados</button>
+                <div id="mostrar_resultadoSensores"></div>
+            </div>
+        </div>
+
+    </div>
+    <div id="div_lucro">
+        <div id="btn_custo">
+            <button onclick="Perda()" class="btn_lucro">Mostrar o Lucro </button>
+        </div>
+        <div id="mostrarLucro" style="margin-left:30%;margin-right:40%; margin-top:2%; float:left"></div>
+    </div>
+</body>
+
+</html>
+
+<script>
+    function calculoEnfermeiras() {
+
+        var horasSemanais = Number(input_semanal.value)
+        var qtdBebes = Number(input_bebes.value)
+        var valorSalario = Number(input_salario.value)
+        var mediçõesHora = Number(input_mediçõesHora.value)
+
+        var horasMensais = horasSemanais * 4
+        var qtdMedições = qtdBebes * 2
+        var tempoMediçõesHora = qtdMedições * mediçõesHora
+        var tempoMediçõesSemana = tempoMediçõesHora * horasSemanais
+        var tempoMediçõesMês = ((tempoMediçõesSemana * 4) / 60).toFixed(0)
+        var salarioPorHora = valorSalario / horasMensais
+        var salarioPorMedições = (salarioPorHora * tempoMediçõesMês)
+        var PorcentagemSalarioMedições = (100 / (valorSalario / salarioPorMedições)).toFixed(0)
+
+        mostrar_resultadoEnfermeiras.innerHTML =
+            `Atualmente, uma enfermeira perde <b style="color: red">${tempoMediçõesMês} horas</b> por mês realizando medições manuais.<br>
+        Financeiramente, são perdidos por mês <b style="color: red">R$${salarioPorMedições.toFixed(2)}</b>, que equivale a <b style="color: red">${PorcentagemSalarioMedições}%</b> do salario dela.
+`
+    }
+
+    function calculoSensores() {
+        var qtdIncubadoras = Number(input_incubadoras.value)
+        var horasDiariasSensor = Number(input_horas.value)
+        var dias = Number(input_dias.value)
+        var custoMensal = (((0.004 * dias * horasDiariasSensor) * 0.86) * qtdIncubadoras)
+
+        mostrar_resultadoSensores.innerHTML = `Com os sensores instalados nas ${qtdIncubadoras} incubadoras, o gasto mensal de energia elétrica será de <b style="color: green">R$${custoMensal.toFixed(2)}</b>.`
+    }
+
+    function Perda() {
+
+        var horasSemanais = Number(input_semanal.value)
+        var qtdBebes = Number(input_bebes.value)
+        var valorSalario = Number(input_salario.value)
+        var mediçõesHora = Number(input_mediçõesHora.value)
+
+        var horasMensais = horasSemanais * 4
+        var qtdMedições = qtdBebes * 2
+        var tempoMediçõesHora = qtdMedições * mediçõesHora
+        var tempoMediçõesSemana = tempoMediçõesHora * horasSemanais
+        var tempoMediçõesMês = ((tempoMediçõesSemana * 4) / 60).toFixed(0)
+        var salarioPorHora = valorSalario / horasMensais
+        var salarioPorMedições = (salarioPorHora * tempoMediçõesMês)
+
+        var qtdIncubadoras = Number(input_incubadoras.value)
+        var horasDiariasSensor = Number(input_horas.value)
+        var dias = Number(input_dias.value)
+        var custoMensal = (((0.004 * dias * horasDiariasSensor) * 0.86) * qtdIncubadoras).toFixed(2)
+        var Perda= salarioPorMedições- custoMensal
+        var PorcentagemPerda = 100 * ( Perda / salarioPorMedições).toFixed(2)
+
+        mostrarLucro.innerHTML = `Sendo assim, com a substituição do trabalho manual pelo uso de sensores, o hospital reduz <b style="color: green;">${PorcentagemPerda}%</b> de seus custos.`
+    }
+</script>
