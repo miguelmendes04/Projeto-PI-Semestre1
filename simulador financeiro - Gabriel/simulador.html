@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>calculadora financeira</title>
+</head>
+
+<body>
+
+    <div class="div1">
+        <h2 class="titulo">Calculadora Financeira</h2>
+
+        <span class="texto">Insira quantos anos você gostaria de alugar o nosso serviço:</span><br>
+        <input class="input" type="text" id="tempo_servico3"><br>
+        <br>
+        
+        <button class="btn" id="cotacao" onclick="calcular()">Calcular Cotação do Serviço</button>
+        <div class="mensagem" id="mensagem"></div>
+        <div class="mensagem" id="mensagem2"></div>
+        
+        <div class="mensagem" id="mensagem3"></div>
+        <div class="mensagem" id="mensagem4"></div>
+    </div>
+</body>
+
+</html>
+<script class="script">
+
+    function calcular() {
+        var calculoA;
+        var mensal;
+
+        calculoA = tempo_servico3.value * 10000;
+        mensal = calculoA / 12;
+
+        mensagem.innerHTML = `<br>Você contratou o serviço por ${tempo_servico3.value} anos.`;
+
+        mensagem2.innerHTML = `<br><b>O preço do serviço anualmente é de R$10.000,00 reais</b>`;
+        mensagem2.innerHTML += `<br><b>Logo anualmente você gastará R$${calculoA},00 reais.</b>`;
+
+        mensagem3.innerHTML = `<br>Dividindo o valor anual por mês, você pagará R$${mensal.toFixed(2)} reais`;
+
+        mensagem4.innerHTML = `<br>Tendo em vista que o valor de um processo caso o bebê venha a óbito é de no mínimo 100 mil reais,`;
+        mensagem4.innerHTML += `<br>com o nosso software sua empresa além de não gastar muito estará aumentando a chance de salvar uma vida.`;
+    }
+</script>
